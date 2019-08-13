@@ -8299,4 +8299,9 @@ public class WindowManagerService extends IWindowManager.Stub
     public void sendCustomAction(Intent intent) {
         mPolicy.sendCustomAction(intent);
     }
+
+    @Override
+    public void takeAlternativeScreenshot() {
+        mPolicy.takeAlternativeScreenshot();
+    }
 }
