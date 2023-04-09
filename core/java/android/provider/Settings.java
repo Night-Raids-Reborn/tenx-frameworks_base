@@ -6423,6 +6423,14 @@ public final class Settings {
         public static final String STATUSBAR_CLOCK_DATE_POSITION = "statusbar_clock_date_position";
 
         /**
+         * Statusbar clock background
+         * 0 - hide accented chip
+         * 1 - show accented chip (default)
+         * @hide
+         */
+        public static final String STATUSBAR_CLOCK_CHIP = "statusbar_clock_chip";
+
+        /**
          * What to show at the bottom of the Ambient diaplay
          * 0: Nothing.
          * 1: Battery Percentage.
@@ -7094,6 +7102,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(STATUSBAR_CLOCK_DATE_STYLE);
             PRIVATE_SETTINGS.add(STATUSBAR_CLOCK_DATE_FORMAT);
 	    PRIVATE_SETTINGS.add(STATUSBAR_CLOCK_DATE_POSITION);
+            PRIVATE_SETTINGS.add(STATUSBAR_CLOCK_CHIP);
             PRIVATE_SETTINGS.add(BATTERY_BAR_ENABLED);
             PRIVATE_SETTINGS.add(BATTERY_BAR_LOCATION);
             PRIVATE_SETTINGS.add(BATTERY_BAR_COLOR);

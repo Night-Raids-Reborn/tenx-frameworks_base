@@ -84,6 +84,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     private LinearLayout mCenterClockLayout;
     private View mRightClock;
     private boolean mShowClock = true;
+    private boolean mShowSBClockBg = true;
 
     // Statusbar Weather Image
     private View mWeatherImageView;
@@ -114,6 +115,9 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                     false, this, UserHandle.USER_ALL);
             mContentResolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_SHOW_WEATHER_LOCATION),
+                    false, this, UserHandle.USER_ALL);
+            mContentResolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.STATUSBAR_CLOCK_CHIP),
                     false, this, UserHandle.USER_ALL);
        }
 
@@ -533,6 +537,22 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
             mClockStyle = Settings.System.getIntForUser(mContentResolver,
                     Settings.System.STATUSBAR_CLOCK_STYLE, 0,
                     UserHandle.USER_CURRENT);
+        }
+
+        mShowSBClockBg = Settings.System.getIntForUser(mContentResolver,
+                Settings.System.STATUSBAR_CLOCK_CHIP, 1,
+                UserHandle.USER_CURRENT) == 1;
+
+        if (mShowSBClockBg) {
+            mClockView.setBackgroundResource(R.drawable.sb_date_bg);
+            mClockView.setPadding(10,5,10,5);
+            mRightClock.setBackgroundResource(R.drawable.sb_date_bg);
+            mRightClock.setPadding(10,5,10,5);
+        } else {
+            mClockView.setBackgroundResource(0);
+            mClockView.setPadding(0,0,0,0);
+            mRightClock.setBackgroundResource(0);
+            mRightClock.setPadding(0,0,0,0);
         }
         updateClockStyle(animate);
         updateSBWeather(animate);
